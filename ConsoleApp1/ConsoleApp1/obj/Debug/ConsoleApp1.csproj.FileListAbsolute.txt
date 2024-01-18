@@ -5,3 +5,10 @@ C:\Users\DELL\Desktop\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.Assem
 C:\Users\DELL\Desktop\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
 C:\Users\DELL\Desktop\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Users\DELL\Desktop\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\asp\Desktop\C\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\asp\Desktop\C\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\asp\Desktop\C\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\asp\Desktop\C\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\asp\Desktop\C\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\asp\Desktop\C\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\asp\Desktop\C\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

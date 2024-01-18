@@ -92,5 +92,32 @@ namespace ConsoleApp1
         {
             return tax_number;
         }
+
     }
+    internal class GuestHouse:Hotel
+    {
+        public int permit_no;
+       public int contact_person;
+        public int number_of_rooms;
+        public GuestHouse(int permit_no, int contact_person, int number_of_rooms):base("abc","abc street", "0876")
+        {
+            this.permit_no = permit_no;
+            this.contact_person = contact_person;
+            this.number_of_rooms = number_of_rooms;
+        }
+        //Get Methods
+        public int Getpermit_no()
+        {
+            return permit_no;
+        }
+        public int Getcontact_person()
+        {
+            return contact_person;
+        }
+        public int Getnumber_of_rooms()
+        {
+            return number_of_rooms;
+        }
+    }
+        
 }

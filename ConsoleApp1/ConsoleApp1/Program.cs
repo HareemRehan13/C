@@ -12,7 +12,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             //Ques 1
-            BankAccount myAccount = new BankAccount(5000.0,5.0);
+            BankAccount myAccount = new BankAccount(5000.0, 5.0);
             // Deposit 
             myAccount.Deposit(500.0);
 
@@ -20,19 +20,26 @@ namespace ConsoleApp1
             myAccount.Withdrawl(200.0);
             //Monthly Processing
             myAccount.MonthlyProcess();
-            Console.WriteLine($"Current Balance:{myAccount.GetBalance()}");
-            Console.WriteLine($"Number Of Deposits:{myAccount.GetNumberOfDeposits()}");
-            Console.WriteLine($"NumberOfWithdrawls:{myAccount.GetNumberOfWithdrawls()}");
+            Console.WriteLine("Current Balance:" + myAccount.GetBalance());
+            Console.WriteLine("Number Of Deposits:" + myAccount.GetNumberOfDeposits());
+            Console.WriteLine("NumberOfWithdrawls:" + myAccount.GetNumberOfWithdrawls());
 
 
             //Ques 2
             Hotel myHotel = new Hotel("ABC Hotel", "123 street", "07854531");
-            Console.WriteLine($"Hotel Name:{myHotel.GetHotelName()}");
-            Console.WriteLine($"Address:{myHotel.GetAddress()}");
-            Console.WriteLine($"Tax Number:{myHotel.GetTaxNumber()}");
-            Console.ReadLine(); 
-        }
-              
+
+            Console.WriteLine("Hotel Name:" + myHotel.GetHotelName());
+            Console.WriteLine("Address:" + myHotel.GetAddress());
+            Console.WriteLine("Tax Number:" + myHotel.GetTaxNumber());
+
+
+            GuestHouse obj = new GuestHouse(90786, 5687, 976);
+
+            Console.WriteLine(obj.Getpermit_no());
+            Console.WriteLine(obj.Getcontact_person());
+            Console.WriteLine(obj.Getnumber_of_rooms());
+            Console.ReadLine();
+        }     
 
     }
 }
