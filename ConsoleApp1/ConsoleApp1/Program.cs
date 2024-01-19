@@ -33,7 +33,7 @@ namespace ConsoleApp1
             Console.WriteLine("Tax Number:" + myHotel.GetTaxNumber());
 
 
-            GuestHouse obj = new GuestHouse(90786, 5687, 976);
+            GuestHouse obj = new GuestHouse(90786, 56887, 976);
 
             Console.WriteLine(obj.Getpermit_no());
             Console.WriteLine(obj.Getcontact_person());
