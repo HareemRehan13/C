@@ -11,6 +11,32 @@ namespace ConsoleApp1
       public string  firstName;
         public string lastName;
         public string CNIC;
+        //Set Methods
+        public void SetfirstName(string a)
+        {
+            firstName = a;
+        }
+        public void SetlasttName(string ab)
+        {
+            lastName = ab;
+        }
+        public void SetCNIC(string abc)
+        {
+            CNIC = abc;
+        }
+        //Get Methods
+        public string Getfirstname()
+        {
+            return firstName;
+        }
+        public string Getlastname()
+        {
+            return lastName;
+        }
+        public string GetCNIC()
+        {
+            return CNIC;
+        }
         //Constructor
         public Employee(string firstName, string lastName, string CNIC)
         {
@@ -19,7 +45,7 @@ namespace ConsoleApp1
         this.CNIC = CNIC;   
         }
         //Method
-      public virtual double earnings()
+      public double earnings()
         {
             return 0.00;
         }

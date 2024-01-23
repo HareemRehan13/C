@@ -9,13 +9,26 @@ namespace ConsoleApp1
     internal class SalariedEmployee:Employee
     {
         public double weeklySalary;
+        //Set Method
+        public void SetweeklySalary(double b)
+        {
+            if (b<=0)
+            {
+                Console.WriteLine("weeklySalary can't sets to negative value.");
+            }
+            else { 
+                weeklySalary = b;
+            }
+           
+        }
+       
         //Constructor
-        public SalariedEmployee(double weeklySalary)
+        public SalariedEmployee(double weeklySalary):base("hareem","rehan","567447")
         {
             this.weeklySalary = weeklySalary;
         }
         //Method
-        public override double earnings()
+        public double earnings()
         {
             return weeklySalary;
         }

@@ -38,6 +38,10 @@ namespace ConsoleApp1
             Console.WriteLine(obj.Getpermit_no());
             Console.WriteLine(obj.Getcontact_person());
             Console.WriteLine(obj.Getnumber_of_rooms());
+
+            //Inheritance Assignment
+            SalariedEmployee abc = new SalariedEmployee(54.5);
+            Console.WriteLine(abc.earnings());
             Console.ReadLine();
         }     
 
