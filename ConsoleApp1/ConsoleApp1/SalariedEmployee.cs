@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     internal class SalariedEmployee:Employee
     {
-        public double weeklySalary;
+        private double weeklySalary;
         //Set Method
         public void SetweeklySalary(double b)
         {

@@ -8,9 +8,9 @@ namespace ConsoleApp1
 {
     internal class Employee
     {
-      public string  firstName;
-        public string lastName;
-        public string CNIC;
+      private string  firstName;
+        private string lastName;
+        private string CNIC;
         //Set Methods
         public void SetfirstName(string a)
         {
