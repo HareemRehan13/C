@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,9 @@ namespace ConsoleApp1
 {
     internal class Program
     {
+ 
         static void Main(string[] args)
-        {
+        { 
             //Ques 1
             BankAccount myAccount = new BankAccount(5000.0, 5.0);
             // Deposit 
@@ -42,6 +44,7 @@ namespace ConsoleApp1
             //Inheritance Assignment
             SalariedEmployee abc = new SalariedEmployee(54.5);
             Console.WriteLine(abc.earnings());
+
             Console.ReadLine();
         }     
 
