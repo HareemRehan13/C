@@ -45,6 +45,29 @@ namespace ConsoleApp1
             SalariedEmployee abc = new SalariedEmployee(54.5);
             Console.WriteLine(abc.earnings());
 
+
+            string a, b;
+            lab2:
+            a= Console.ReadLine();
+            lab1:
+            b= Console.ReadLine() ;
+           
+            try
+            {
+                int aa = Convert.ToInt32(a);
+                int bb = Convert.ToInt32(b);
+                Console.WriteLine("the division is:"+ (aa/bb));
+            }
+            catch(ArithmeticException o)
+            {
+                Console.WriteLine("please enter number 2 again");
+                goto lab1;
+            }
+            catch (FormatException o)
+            {
+                Console.WriteLine("please both number  again");
+                goto lab2;
+            }
             Console.ReadLine();
         }     
 
