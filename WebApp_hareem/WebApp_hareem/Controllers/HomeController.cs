@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApp_hareem.Models;
 
@@ -24,7 +24,7 @@ namespace WebApp_hareem.Controllers
         }
         public IActionResult About()
         {
-           ViewBag.name = "Hareem";
+            ViewBag.name = "Hareem";
             return View();
         }
 
