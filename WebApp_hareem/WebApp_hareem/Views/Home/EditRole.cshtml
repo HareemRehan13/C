@@ -1,0 +1,21 @@
+﻿<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 col-xs-12">
+
+                <form role="form" asp-action="EditRole2">
+                    @model WebApp_hareem.Models.Role
+                    <input type="hidden" asp-for="RId" />
+                    <div class="form-group">
+                        <label>Role Name</label>
+                        <input class="form-control" placeholder="PLease Enter Keyword" asp-for="RName" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Edit Role</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

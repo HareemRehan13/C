@@ -17,6 +17,36 @@ namespace WebApp_hareem.Controllers
         {
             return View();
         }
+        public IActionResult EditRole(int? id)
+        {
+            var data = db.Roles.FirstOrDefault(x=>x.RId == id);
+            return View(data);
+        }
+        public IActionResult EditRole2(Role r)
+        {
+            db.Update(r);
+            db.SaveChanges();
+            return RedirectToAction("ShowRole");
+        
+        }
+        public IActionResult DeleteRole(int? id)
+        {
+            var data = db.Roles.FirstOrDefault(x => x.RId == id);
+            db.Remove(data);
+            db.SaveChanges();
+            return RedirectToAction("ShowRole");
+
+        }
+        public IActionResult AddRole()
+        {
+            return View();
+        }
+        public IActionResult AddRole2(Role r)
+        {
+            db.Add(r);
+            db.SaveChanges();
+            return RedirectToAction(nameof(ShowRole));
+        }
         public IActionResult ShowRole()
         {
             return View(db.Roles.ToList());

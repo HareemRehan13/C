@@ -23,8 +23,9 @@
                                     <tr>
                                             <td>@i.RId</td>
                                             <td>@i.RName</td>
-                                    
-                                    </tr>
+                                            <td><a asp-controller="Home" asp-action="EditRole" asp-route-id="@i.RId">Edit</a></td>
+                                <td><a asp-controller="Home" asp-action="DeleteRole" asp-route-id="@i.RId">Delete</a></td>
+                                 </tr>
                                     }
                                 </tbody>
                             </table>

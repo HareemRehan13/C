@@ -32,14 +32,15 @@ namespace WebApp_hareem.Data
         {
             modelBuilder.Entity<Role>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.RId)
+                    .HasName("PK__Role__C4762327D2E1C35B");
 
                 entity.ToTable("Role");
 
                 entity.Property(e => e.RId).HasColumnName("r_id");
 
                 entity.Property(e => e.RName)
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("r_name");
             });
