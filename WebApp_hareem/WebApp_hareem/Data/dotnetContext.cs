@@ -18,6 +18,7 @@ namespace WebApp_hareem.Data
         }
 
         public virtual DbSet<Role> Roles { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,6 +44,37 @@ namespace WebApp_hareem.Data
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("r_name");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.UId)
+                    .HasName("PK__Users__B51D3DEACB885E1C");
+
+                entity.Property(e => e.UId).HasColumnName("u_id");
+
+                entity.Property(e => e.RId).HasColumnName("r_id");
+
+                entity.Property(e => e.UImg)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("u_img");
+
+                entity.Property(e => e.UName)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("u_name");
+
+                entity.Property(e => e.UPass)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("u_pass");
+
+                entity.HasOne(d => d.RIdNavigation)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.RId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Users__r_id__49C3F6B7");
             });
 
             OnModelCreatingPartial(modelBuilder);

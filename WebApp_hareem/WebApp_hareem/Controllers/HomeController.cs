@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 using WebApp_hareem.Data;
 using WebApp_hareem.Models;
@@ -15,6 +16,11 @@ namespace WebApp_hareem.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        } 
+        public IActionResult AddUser()
+        {
+            ViewBag.Roless = new SelectList(db.Roles, "RId", "RName");
             return View();
         }
         public IActionResult EditRole(int? id)
@@ -41,12 +47,14 @@ namespace WebApp_hareem.Controllers
         {
             return View();
         }
+      
         public IActionResult AddRole2(Role r)
         {
             db.Add(r);
             db.SaveChanges();
             return RedirectToAction(nameof(ShowRole));
         }
+        
         public IActionResult ShowRole()
         {
             return View(db.Roles.ToList());
