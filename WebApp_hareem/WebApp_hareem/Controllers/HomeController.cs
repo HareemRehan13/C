@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting.StaticWebAssets;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System.Diagnostics;
 using WebApp_hareem.Data;
 using WebApp_hareem.Models;
@@ -22,6 +25,35 @@ namespace WebApp_hareem.Controllers
         {
             ViewBag.Roless = new SelectList(db.Roles, "RId", "RName");
             return View();
+        }
+        public IActionResult AddUser2(User u ,IFormFile images)
+        {
+            if(images != null && images.Length > 0)
+            {
+                var filename = Path.GetFileName(images.FileName);
+                string folderpath = Path.Combine("wwwroot/assets/img",filename);
+                var dbpath = Path.Combine("assets/img", filename);
+                using (var stream = new FileStream(folderpath, FileMode.Create))
+                {
+                    images.CopyTo(stream);
+                }
+                u.UImg= dbpath;
+                db.Add(u);
+                db.SaveChanges();
+                return RedirectToAction(nameof(ShowUser));
+            }
+          
+            return View("AddUser");
+        }
+        public IActionResult ShowUser()
+        {
+            ViewBag.data = db.Users.Include("RIdNavigation").ToList();
+            return View();
+        }
+        public IActionResult EditUser(int? id)
+        {
+            var data= db.Users.Where(x => x.RId == id).ToList();
+            return View(data);
         }
         public IActionResult EditRole(int? id)
         {
