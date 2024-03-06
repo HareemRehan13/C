@@ -1,0 +1,70 @@
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 col-xs-12">
+
+                <form role="form" asp-action="EditUser2" encrypt="multipart/form-data">
+                    @model WebApp_hareem.Models.User
+                    <input type="hidden" asp-for="UId" />
+                    <div class="form-group">
+                        <label>User Name</label>
+                        <input class="form-control" placeholder="PLease Enter Keyword" asp-for="UName" />
+                    </div>
+                    <div class="form-group">
+                        <label>User Password</label>
+                        <input class="form-control" type="password" placeholder="PLease Enter Keyword" asp-for="UPass" />
+                    </div>
+                    <div class="form-group">
+                        <label>User Image</label>
+                        <input type="file" class="form-control" placeholder="PLease Enter Keyword" name="images" />
+                        <img src="~/Model.UImg" height="50" width="50" />
+                    </div>
+                    <div class="form-group">
+                        <select asp-items="ViewBag.Roless" asp-for="RId">
+                            <option>
+                                Select an option
+                            </option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add User</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+//HomeController
+
+  public IActionResult EditUser(int? id)
+  {
+      ViewBag.Roless = new SelectList(db.Roles,"RId","RName");
+      var data= db.Users.FirstOrDefault(x => x.RId == id);
+      return View(data);
+  }
+    public IActionResult EditUser2(User u, IFormFile images)
+    {
+        if (images != null && images.Length > 0)
+        { 
+        Guid r = Guid.NewGuid();
+            var fileName= Path.GetFileNameWithoutExtension(images.FileName);
+            var extension = images.ContentType.ToLower();
+            var exten_pricese = extension.Substring(6);
+
+            var unique_name = fileName + r + "." + exten_pricese;
+            string imagesFolder = Path.Combine(HttpContext.Request.PathBase.Value, "wwwroot/assets/img");
+            string filePath = Path.Combine(imagesFolder, unique_name);
+            using(var stream = new FileStream(filePath, FileMode.Create))
+            {
+                images.CopyTo(stream);
+            }
+            var dbAdress = Path.Combine("assets/img", unique_name);
+            u.UImg = dbAdress;
+            db.Update(u);
+            db.SaveChanges();
+
+            return RedirectToAction(nameof(ShowUser));
+
+        }
+        return View("EditUser");
+        }
