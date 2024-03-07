@@ -52,8 +52,43 @@ namespace WebApp_hareem.Controllers
         }
         public IActionResult EditUser(int? id)
         {
-            var data= db.Users.Where(x => x.RId == id).ToList();
+            ViewBag.Roless = new SelectList(db.Roles, "RId", "RName");
+            var data = db.Users.FirstOrDefault(x => x.RId == id);
             return View(data);
+        }
+        public IActionResult EditUser2(User u, IFormFile images)
+        {
+            if (images != null && images.Length > 0)
+            {
+                Guid r = Guid.NewGuid();
+                var fileName = Path.GetFileNameWithoutExtension(images.FileName);
+                var extension = images.ContentType.ToLower();
+                var exten_pricese = extension.Substring(6);
+
+                var unique_name = fileName + r + "." + exten_pricese;
+                string imagesFolder = Path.Combine(HttpContext.Request.PathBase.Value, "wwwroot/assets/img");
+                string filePath = Path.Combine(imagesFolder, unique_name);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    images.CopyTo(stream);
+                }
+                var dbAdress = Path.Combine("assets/img", unique_name);
+                u.UImg = dbAdress;
+                db.Update(u);
+                db.SaveChanges();
+
+                return RedirectToAction(nameof(ShowUser));
+
+            }
+            return View("EditUser");
+        }
+        public IActionResult DeleteUser(int? id)
+        {
+            var data = db.Users.FirstOrDefault(x => x.UId == id);
+            db.Remove(data);
+            db.SaveChanges();
+            return RedirectToAction("ShowUser");
+
         }
         public IActionResult EditRole(int? id)
         {
