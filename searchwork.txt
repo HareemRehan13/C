@@ -1,0 +1,111 @@
+//Home Controller
+public IActionResult Searching(IFormCollection abc)
+{
+    var search = abc["searchedtext"];
+    var data = db.Users.Include("RolesNavigation").Where(x => x.UName.Contains(search)).ToList();
+    return View(data);
+}
+
+//ShowUser
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 col-xs-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Responsive Table Example
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>User Name</th>
+
+                                    </tr>
+                                </thead>
+                                <form asp-action="Searching">
+                                    <input name="searchedtext"/>
+                                    <button type="submit">Search
+                                    </button>
+                                </form>
+
+                                @model IEnumerable<WebApp_hareem.Models.User>
+                                <tbody>
+                                    @foreach (var i in ViewBag.data)
+                                    {
+                                        <tr>
+                                            <td>@i.UId</td>
+                                            <td>@i.UName</td>
+                                            <td>@i.UPass</td>
+                                            <td>@i.RIdNavigation.RName</td>
+                                            <td><img src="~/@i.UImg" width="50" height="50" /></td>
+                                            <td><a asp-controller="Home" asp-action="EditUser" asp-route-id="@i.UId">Edit</a></td>
+                                            <td><a asp-controller="Home" asp-action="DeleteUser" asp-route-id="@i.UId">Delete</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+//Searching
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-9 col-sm-12 col-xs-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Responsive Table Example
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>User Name</th>
+
+                                    </tr>
+                                </thead>
+                                <form asp-action="Searching">
+                                    <input name="searchedtext" />
+                                    <button type="submit">
+                                        Search
+                                    </button>
+                                </form>
+
+                                @model IEnumerable<WebApp_hareem.Models.User>
+                                <tbody>
+                                    @foreach (var i in Model)
+                                    {
+                                        <tr>
+                                            <td>@i.UId</td>
+                                            <td>@i.UName</td>
+                                            <td>@i.UPass</td>
+                                            <td>@i.RIdNavigation.RName</td>
+                                            <td><img src="~/@i.UImg" width="50" height="50" /></td>
+                                            <td><a asp-controller="Home" asp-action="EditUser" asp-route-id="@i.UId">Edit</a></td>
+                                            <td><a asp-controller="Home" asp-action="DeleteUser" asp-route-id="@i.UId">Delete</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
