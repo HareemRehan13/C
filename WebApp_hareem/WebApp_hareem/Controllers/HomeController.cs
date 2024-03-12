@@ -15,8 +15,13 @@ namespace WebApp_hareem.Controllers
         public HomeController(dotnetContext db)
         {
             this.db = db;
-        }   
-
+        }
+        public IActionResult Searching(IFormCollection abc)
+        {
+            var search = abc["searchedtext"];
+            var data = db.Users.Include("RIdNavigation").Where(x => x.UName.Contains(search)).ToList();
+            return View(data);
+        }
         public IActionResult Index()
         {
             return View();

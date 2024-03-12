@@ -89,6 +89,14 @@
       "PackagePath": "staticwebassets\\assets\\img\\find_user.png"
     },
     {
+      "Id": "C:\\Users\\asp\\Desktop\\WebApp_hareem\\WebApp_hareem\\wwwroot\\assets\\img\\pexels-photo-919073.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\pexels-photo-919073.webp"
+    },
+    {
+      "Id": "C:\\Users\\asp\\Desktop\\WebApp_hareem\\WebApp_hareem\\wwwroot\\assets\\img\\pexels-photo-919073772c52b5-50aa-4717-be49-67a25fd93c66.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\pexels-photo-919073772c52b5-50aa-4717-be49-67a25fd93c66.webp"
+    },
+    {
       "Id": "C:\\Users\\asp\\Desktop\\WebApp_hareem\\WebApp_hareem\\wwwroot\\assets\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\bootstrap.min.js"
     },

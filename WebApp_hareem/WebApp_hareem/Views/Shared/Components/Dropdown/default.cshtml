@@ -1,0 +1,6 @@
+﻿@model IEnumerable<WebApp_hareem.Models.Role>;
+
+@foreach(var x in Model)
+{
+    <li><a class="dropdown-item" asp-controller="Home" asp-action="" asp-route-id="@x.RId">@x.RName</a></li>
+}

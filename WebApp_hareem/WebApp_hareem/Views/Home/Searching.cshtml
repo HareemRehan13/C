@@ -26,7 +26,7 @@
 
                                 @model IEnumerable<WebApp_hareem.Models.User>
                                 <tbody>
-                                    @foreach (var i in ViewBag.data)
+                                    @foreach (var i in Model)
                                     {
                                         <tr>
                                             <td>@i.UId</td>
@@ -48,3 +48,4 @@
         </div>
     </div>
 </div>
+

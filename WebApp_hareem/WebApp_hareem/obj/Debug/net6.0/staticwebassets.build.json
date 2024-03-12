@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HC541ve+wpB0bUpDkvAUMpW5LxZLJP1ia5OfX7nbP2g=",
+  "Hash": "eRhTal6SVo337719AHvh8mp6P5W1vclkzCqZadqLSkQ=",
   "Source": "WebApp_hareem",
   "BasePath": "_content/WebApp_hareem",
   "Mode": "Default",
@@ -406,6 +406,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\find_user.png"
+    },
+    {
+      "Identity": "C:\\Users\\asp\\Desktop\\WebApp_hareem\\WebApp_hareem\\wwwroot\\assets\\img\\pexels-photo-919073.webp",
+      "SourceId": "WebApp_hareem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\asp\\Desktop\\WebApp_hareem\\WebApp_hareem\\wwwroot\\",
+      "BasePath": "_content/WebApp_hareem",
+      "RelativePath": "assets/img/pexels-photo-919073.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\pexels-photo-919073.webp"
+    },
+    {
+      "Identity": "C:\\Users\\asp\\Desktop\\WebApp_hareem\\WebApp_hareem\\wwwroot\\assets\\img\\pexels-photo-919073772c52b5-50aa-4717-be49-67a25fd93c66.webp",
+      "SourceId": "WebApp_hareem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\asp\\Desktop\\WebApp_hareem\\WebApp_hareem\\wwwroot\\",
+      "BasePath": "_content/WebApp_hareem",
+      "RelativePath": "assets/img/pexels-photo-919073772c52b5-50aa-4717-be49-67a25fd93c66.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\pexels-photo-919073772c52b5-50aa-4717-be49-67a25fd93c66.webp"
     },
     {
       "Identity": "C:\\Users\\asp\\Desktop\\WebApp_hareem\\WebApp_hareem\\wwwroot\\assets\\js\\bootstrap.min.js",
