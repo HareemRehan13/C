@@ -5,6 +5,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<dotnetContext>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie{
+     op =>
+        {
+        op.LoginPath = "/Home/Login";
+        op.AccessDeniedPath = "/Home/Login";
+        op.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+
+    }
+
+      
+} ;
 
 var app = builder.Build();
 
@@ -16,6 +27,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
