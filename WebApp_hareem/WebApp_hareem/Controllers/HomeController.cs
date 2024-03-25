@@ -1,9 +1,14 @@
-﻿using Microsoft.AspNetCore.Hosting.StaticWebAssets;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Diagnostics;
+using System.Security.Claims;
 using WebApp_hareem.Data;
 using WebApp_hareem.Models;
 
@@ -16,16 +21,68 @@ namespace WebApp_hareem.Controllers
         {
             this.db = db;
         }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Logout()
+        {
+            var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
+        public IActionResult Log(User U)
+        {
+            var res = db.Users.FirstOrDefault(x => x.UName == U.UName && x.UPass == U.UPass);
+            ClaimsIdentity identity = null;
+            bool isAuthenticate = false;
+            if (res != null)
+            {
+                if (res.RId == 1)
+                {
+                    identity = new ClaimsIdentity(new[]{
+                new Claim(ClaimTypes.Name,res.UName),
+                new Claim(ClaimTypes.NameIdentifier, res.UId.ToString()),
+                new Claim(ClaimTypes.Role,"Admin")
+                },
+                CookieAuthenticationDefaults.AuthenticationScheme) ;
+                    isAuthenticate = true;
+                }
+                else
+                {
+                    identity = new ClaimsIdentity(new[]{
+                new Claim(ClaimTypes.Name,res.UName),
+                new Claim(ClaimTypes.NameIdentifier, res.UId.ToString()),
+                new Claim(ClaimTypes.Role,"User")
+            },
+
+
+                     CookieAuthenticationDefaults.AuthenticationScheme);
+                    isAuthenticate = true;
+                }
+                if (isAuthenticate)
+                {
+                    var principal = new ClaimsPrincipal(identity);
+                    var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                    if (res.RId == 1)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "User");
+                    }
+                }
+            }
+            return View("Login");
+        }
+        
         public IActionResult Searching(IFormCollection abc)
         {
             var search = abc["searchedtext"];
             var data = db.Users.Include("RIdNavigation").Where(x => x.UName.Contains(search)).ToList();
             return View(data);
         }
-        public IActionResult Index()
-        {
-            return View();
-        } 
+        
         public IActionResult AddUser()
         {
             ViewBag.Roless = new SelectList(db.Roles, "RId", "RName");
@@ -53,6 +110,11 @@ namespace WebApp_hareem.Controllers
         public IActionResult ShowUser()
         {
             ViewBag.data = db.Users.Include("RIdNavigation").ToList();
+            return View();
+        }
+        [Authorize(Roles= "Admin")]
+        public IActionResult Index()
+        {
             return View();
         }
         public IActionResult EditUser(int? id)
